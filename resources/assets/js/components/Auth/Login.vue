@@ -25,6 +25,8 @@
                         <button type="submit" class="btn">
                             Login
                         </button>
+
+                        <a href="#/register" class="btn green">Cadastre-se</a>
                     </form>
                 </div>
             </div>

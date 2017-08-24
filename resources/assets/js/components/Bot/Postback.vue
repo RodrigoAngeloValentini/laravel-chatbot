@@ -4,7 +4,7 @@
 
         <div>
             <router-link v-for="postback in postbacks.data" class="waves-effect btn-large waves-light light-green btn-postback" :to="{path: '/postback/' + postback.id}" :key="postback.id">
-                {{ postback.value }}
+               <i class="material-icons" v-if="postback.get_started">done_all</i> {{ postback.value }}
             </router-link>
         </div>
 
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+
     export default {
         data: function () {
             return {

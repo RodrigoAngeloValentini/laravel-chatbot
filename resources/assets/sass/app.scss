@@ -2,9 +2,9 @@
 @import "node_modules/materialize-css/sass/materialize";
 @import "node_modules/sweetalert/dev/sweetalert.scss";
 
-#main-nav{
-  a:hover,a:active,a:focus{
-    color: #FFF;
+#main-nav {
+  a:hover, a:focus {
+    color: #fff;
     text-decoration: none;
   }
 }

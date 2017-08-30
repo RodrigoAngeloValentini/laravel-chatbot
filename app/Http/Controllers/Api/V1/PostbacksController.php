@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\ApiControllerTrait;
 use App\Http\Controllers\Controller;
 use App\Postback;
 use CodeBot\Build\Solid;
@@ -10,7 +9,7 @@ use GuzzleHttp\Exception\RequestException;
 
 class PostbacksController extends Controller
 {
-    use ApiControllerTrait;
+    use \App\Http\Controllers\ApiControllerTrait;
 
     protected $model;
     protected $relationships = ['Messages'];
@@ -27,18 +26,19 @@ class PostbacksController extends Controller
         $bot = Solid::factory();
         Solid::pageAccessToken(config('botfb.pageAccessToken'));
 
-        try{
+        try {
             $bot->addGetStartedButton($postback->value);
-        } catch (RequestException $e){
+        } catch (RequestException $e) {
             return (string) $e->getResponse()->getBody();
         }
 
-        Postback::where(['get_started' => true])->update(['get_started'=>false]);
+        Postback::where(['get_started' => true])
+            ->update(['get_started'=>false]);
 
         $postback->get_started = true;
         $postback->save();
 
-        return response()->json(['status' => 'ok']);
+        return response()->json(['status'=>'ok']);
     }
 
     public function removeGetStartedButton()
@@ -46,14 +46,15 @@ class PostbacksController extends Controller
         $bot = Solid::factory();
         Solid::pageAccessToken(config('botfb.pageAccessToken'));
 
-        try{
+        try {
             $bot->removeGetStartedButton();
-        } catch (RequestException $e){
+        } catch (RequestException $e) {
             return (string) $e->getResponse()->getBody();
         }
 
-        Postback::where(['get_started' => true])->update(['get_started'=>false]);
+        Postback::where(['get_started' => true])
+            ->update(['get_started'=>false]);
 
-        return response()->json(['status' => 'ok']);
+        return response()->json(['status'=>'ok']);
     }
 }

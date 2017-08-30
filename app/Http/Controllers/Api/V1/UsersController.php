@@ -1,7 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\ApiControllerTrait;
 use App\Http\Controllers\Controller;
 use App\User;
 
@@ -12,7 +12,7 @@ class UsersController extends Controller
         $result = \Auth::user();
         $user = [];
 
-        if($result){
+        if ($result) {
             $user = User::find($result->id);
         }
 

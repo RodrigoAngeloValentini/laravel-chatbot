@@ -11,26 +11,25 @@ trait ApiControllerTrait
         $data = $request->all();
         $limit = $data['limit'] ?? 20;
         $order = $data['order'] ?? null;
-        if($order !== null){
+        if ($order !== null) {
             $order = explode(',', $order);
         }
-
-        $order[0] = $order['0'] ?? 'id';
-        $order[1] = $order['1'] ?? 'asc';
+        $order[0] = $order[0] ?? 'id';
+        $order[1] = $order[1] ?? 'asc';
 
         $where = $data['where'] ?? [];
         $like = $data['like'] ?? null;
 
-        if($like){
+        if ($like) {
             $like = explode(',', $like);
             $like[1] = '%' . $like[1] . '%';
         }
 
         $users = $this->model
             ->orderBy($order[0], $order[1])
-            ->where(function ($query) use ($like){
-                if($like){
-                    return $query->where($like[0], 'like', $like[1]);
+            ->where(function ($query) use($like) {
+                if ($like) {
+                    return $query->where($like[0], 'like',  $like[1]);
                 }
                 return $query;
             })
@@ -39,12 +38,12 @@ trait ApiControllerTrait
             ->paginate($limit);
 
         return response()->json($users);
-
     }
 
     public function show($id)
     {
-        $result = $this->model->with($this->relationships())->findOrFail($id);
+        $result = $this->model->with($this->relationships())
+            ->findOrFail($id);
         return response()->json($result);
     }
 
@@ -70,10 +69,9 @@ trait ApiControllerTrait
 
     protected function relationships()
     {
-        if(isset($this->relationships)){
+        if (isset($this->relationships)) {
             return $this->relationships;
         }
         return [];
     }
-
 }

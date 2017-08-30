@@ -8,21 +8,19 @@
 
         <title>Laravel</title>
 
-        <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+        <link rel="stylesheet" href="{{mix('/css/app.css')}}">
         <script>
             window.Laravel = {!! json_encode([
                 'csrfToken' => csrf_token()
             ]) !!}
         </script>
     </head>
-    <body class="blue-grey light-5">
+    <body class="blue-grey lighten-5">
         <nav id="main-nav">
             <div class="nav-wrapper container-fluid grey darken-4">
                 <div class="row">
                     <div class="col s12">
-                        <a href="#/" class="brand-logo">
-                            <i class="material-icons">chat</i>ChatBot
-                        </a>
+                        <a href="#/" class="brand-logo"><i class="material-icons">chat</i>ChatBot</a>
 
                         <ul class="right hide-on-med-and-down">
                             <li>
@@ -40,27 +38,19 @@
             <li>
                 <div class="userView">
                     <div class="background"><img src="img/leaf_background.jpg" alt=""></div>
-                    <a>
-                        <img src="https://secure.gravatar.com/avatar/a1c66589be643fecada88a4e9841c615r" alt="" class="circle">
-                    </a>
-                    <a href="">
-                        <span class="white-text name">Rodrigo Angelo Valentini</span>
-                    </a>
-                    <a href="https://github.com/RodrigoAngeloValentini">
-                        <span class="white-text email">@RodrigoAngeloValentini</span>
-                    </a>
+                    <a><img src="https://secure.gravatar.com/avatar/beef4a109b5744b8b51537c0136f7e3b" alt="" class="circle"></a>
+                    <a><span class="white-text name">Erik Figueiredo</span></a>
+                    <a href="https://github.com/erikfig"><span class="white-text email">@erikfig</span></a>
                 </div>
             </li>
         </ul>
-
         <div id="app"></div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
         <script>
-            $("#nav-mobile").sideNav();
+          $('#nav-mobile').sideNav();
         </script>
-        <script src="{{ mix('/js/app.js') }}"></script>
-
+        <script src="{{mix('/js/app.js')}}"></script>
     </body>
 </html>

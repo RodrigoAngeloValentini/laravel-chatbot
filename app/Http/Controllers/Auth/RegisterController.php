@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -59,7 +59,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array  $data[
      * @return User
      */
     protected function create(array $data)
@@ -73,9 +73,9 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        if($this->validator($request->all())->fails()){
+        if ($this->validator($request->all())->fails()) {
             return response()->json($this->validator($request->all())->errors());
-        };
+        }
 
         event(new Registered($user = $this->create($request->all())));
 
@@ -87,6 +87,6 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, $user)
     {
-        return ['status' => 'success'];
+        return ['status'=>'success'];
     }
 }

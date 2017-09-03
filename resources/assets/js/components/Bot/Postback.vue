@@ -3,7 +3,11 @@
     <h3>Postbacks</h3>
 
     <div v-if="postbacks.data.length > 0">
-      <router-link v-for="postback in postbacks.data" class="waves-effect waves-light light-green btn-large btn-postback" :to="{path: '/postback/' + postback.id}" :key="index">
+      <router-link
+          v-for="postback in postbacks.data"
+          class="waves-effect waves-light light-green btn-large btn-postback"
+          :to="{path: '/postback/' + postback.id}" :key="postback.id"
+      >
         <i class="material-icons" v-if="postback.get_started">done_all</i> {{ postback.value }} <small v-if="postback.get_started">botão começar</small>
       </router-link>
     </div>
